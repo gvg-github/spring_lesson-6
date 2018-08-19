@@ -1,0 +1,111 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:xl="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://gvg.ru/spring/soap/task"
+           targetNamespace="http://gvg.ru/spring/soap/task"
+           elementFormDefault="qualified">
+
+    <xs:complexType name="taskRecord">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="resultRecord">
+        <xs:sequence>
+            <xl:element name="success" type="xs:boolean"/>
+            <xl:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="testRequest">
+        <xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="testResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xl:element name="success" type="xs:boolean"/>
+                <xl:element name="message" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="pingRequest">
+        <xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="pingResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xl:element name="success" type="xs:boolean"/>
+                <xl:element name="message" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createTaskRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createTaskResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xl:element name="success" type="xs:boolean"/>
+                <xl:element name="message" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="removeTaskRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="removeTaskResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xl:element name="success" type="xs:boolean"/>
+                <xl:element name="message" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getTasksRequest">
+        <xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getTasksResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="rows" type="tns:taskRecord" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="currency">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="GBP"/>
+            <xs:enumeration value="EUR"/>
+            <xs:enumeration value="PLN"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

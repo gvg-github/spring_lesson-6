@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <style>
+        .even {
+            background-color: lightgrey;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css"
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
+</head>
+
+<header>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Spring Boot</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a th:href="@{'/'}">Home</a></li>
+                    <li class="active"><a href="#">News</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body>
+<div class="container">
+
+    <table border="1" width="100%" cellpadding="10" cellspacing="10" style="border-collapse: collapse;">
+        <tr>
+            <th>№</th>
+            <th>Cap</th>
+            <th>Text</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr th:each="news,iter : ${newsmap}" th:class="${iter.even ? 'even' : 'odd'}">
+            <td width="50" align="center" nowrap="nowrap" th:utext="${iter.index +1} + '.'">...</td>
+            <td width="33%" th:utext="${news.cap}">...</td>
+            <td width="33%" th:utext="${news.text}">...</td>
+            <td width="50" nowrap="nowrap" align="center">
+                <a th:href="@{'/person-edit?id=' + ${news.id}}">EDIT</a>
+            </td>
+            <td width="50" nowrap="nowrap" align="center">
+                <a th:href="@{'/person-remove?id=' + ${news.id}}">REMOVE</a>
+            </td>
+        </tr>
+    </table>
+    <br/>
+
+    <form method="get" action="/news-create">
+        <button style="font-size: 2em;" type="submit" vakue="@{'/person-create}">CREATE</button>
+    </form>
+</div>
+
+
+</body>
+</html>
