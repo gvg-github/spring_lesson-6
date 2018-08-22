@@ -40,17 +40,14 @@ public class NewsController {
         return "redirect:/person-list";
     }
 
-//    @RequestMapping(value = {"/person-edit"}, method = RequestMethod.GET)
-//    public String personEdit(@RequestParam("id") String personId, Map<String, Object> model) {
-//        final User user = userRepository.findOne(personId);
-//        model.put("person", user);
-//        return "person-edit";
-//    }
+    //    @RequestMapping(value = {"/news-get"}, method = RequestMethod.GET)
+    public News newsGet(@RequestParam("id") String id) {
+        return newsRepository.findOne(id);
+    }
 
     @RequestMapping(value = {"/news-save"}, method = RequestMethod.POST)
     public String newsSave(@ModelAttribute("person") News news) {
         newsRepository.merge(news);
         return "redirect:/person-list";
     }
-
 }

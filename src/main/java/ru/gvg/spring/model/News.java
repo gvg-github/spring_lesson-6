@@ -23,6 +23,11 @@ public class News implements Serializable{
 
     }
 
+    public News(String cap, String text) {
+        this.cap = cap;
+        this.text = text;
+    }
+
     public News(String cap, String text, List<String> tags, Date date, String preview, double price) {
         this.cap = cap;
         this.text = text;
